@@ -1,0 +1,443 @@
+/* Zeta Log Companion panel — Shadow DOM 内のみで適用 (§17 / §19) */
+
+:host {
+  all: initial;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* hidden 属性が display 指定 (class / inline) に負けないようにする */
+[hidden] {
+  display: none !important;
+}
+
+.zlc-root {
+  --bg: #14161a;
+  --bg-2: #1c2027;
+  --bg-3: #242a33;
+  --border: #313845;
+  --text: #e7e9ee;
+  --muted: #9aa3b2;
+  --accent: #7aa2ff;
+  --accent-2: #2e4a8f;
+  --ok: #5dd39e;
+  --warn: #ffcf6b;
+  --danger: #ff7a7a;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI",
+    Meiryo, system-ui, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.55;
+  border-left: 1px solid var(--border);
+}
+
+.zlc-resize-handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  cursor: ew-resize;
+  z-index: 10;
+}
+.zlc-resize-handle:hover {
+  background: var(--accent-2);
+}
+
+.zlc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  flex: none;
+}
+
+.zlc-title {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button.zlc-icon-btn {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg-3);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+button.zlc-icon-btn:hover {
+  border-color: var(--accent);
+}
+
+.zlc-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  flex: none;
+}
+.zlc-tabs button {
+  flex: 1 1 0;
+  padding: 7px 2px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.zlc-tabs button:hover {
+  color: var(--text);
+}
+.zlc-tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.zlc-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 10px 12px;
+  gap: 10px;
+}
+
+.zlc-global-status {
+  flex: none;
+  padding: 6px 12px;
+  font-size: 11.5px;
+  border-bottom: 1px solid var(--border);
+}
+.zlc-global-status.error {
+  color: var(--danger);
+}
+.zlc-global-status.info {
+  color: var(--warn);
+}
+
+/* ---- LIVE ---- */
+
+.zlc-plot-name {
+  font-size: 15px;
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.zlc-live-stats {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.zlc-save-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.zlc-badge {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.zlc-badge.on {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+.zlc-badge.off {
+  color: var(--muted);
+}
+.zlc-badge.local {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+.zlc-badge.remote {
+  color: var(--warn);
+  border-color: var(--warn);
+}
+
+.zlc-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+button.zlc-btn {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-3);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button.zlc-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+button.zlc-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+button.zlc-btn.primary {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+}
+button.zlc-btn.primary:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+button.zlc-btn.danger:hover:not(:disabled) {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.zlc-sync-progress {
+  padding: 6px 8px;
+  border: 1px solid var(--accent-2);
+  border-radius: 6px;
+  background: rgba(122, 162, 255, 0.08);
+  color: var(--accent);
+  font-size: 11.5px;
+}
+
+textarea.zlc-textarea {
+  flex: 1 1 auto;
+  min-height: 120px;
+  width: 100%;
+  resize: vertical;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.6;
+}
+textarea.zlc-textarea:focus {
+  outline: 1px solid var(--accent-2);
+}
+
+/* ---- ARCHIVES ---- */
+
+.zlc-archive-item {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg-2);
+  cursor: pointer;
+}
+.zlc-archive-item:hover {
+  border-color: var(--accent);
+}
+.zlc-archive-item .name {
+  font-weight: 700;
+  word-break: break-all;
+}
+.zlc-archive-item .meta {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.zlc-empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 18px 0;
+}
+
+.zlc-detail-meta {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.zlc-summary-item {
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg-2);
+}
+.zlc-summary-item .meta {
+  color: var(--muted);
+  font-size: 10.5px;
+  margin-bottom: 4px;
+}
+.zlc-summary-item .body {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 11.5px;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+/* ---- SUMMARY / SETTINGS forms ---- */
+
+.zlc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.zlc-field > label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.zlc-field input[type="text"],
+.zlc-field input[type="password"],
+.zlc-field input[type="number"],
+.zlc-field select,
+.zlc-field textarea {
+  padding: 5px 7px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+}
+.zlc-field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+.zlc-field input:focus,
+.zlc-field select:focus,
+.zlc-field textarea:focus {
+  outline: 1px solid var(--accent-2);
+}
+
+.zlc-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.zlc-check input {
+  accent-color: var(--accent);
+}
+
+.zlc-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.zlc-row > .zlc-field {
+  flex: 1 1 0;
+}
+
+.zlc-note {
+  color: var(--muted);
+  font-size: 10.5px;
+}
+
+.zlc-confirm {
+  padding: 9px 10px;
+  border: 1px solid var(--warn);
+  border-radius: 7px;
+  background: rgba(255, 207, 107, 0.07);
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.zlc-confirm .dest {
+  word-break: break-all;
+  font-weight: 700;
+}
+
+.zlc-result-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.zlc-status-line {
+  font-size: 11.5px;
+  min-height: 1.2em;
+  word-break: break-word;
+}
+.zlc-status-line.ok {
+  color: var(--ok);
+}
+.zlc-status-line.error {
+  color: var(--danger);
+}
+.zlc-status-line.busy {
+  color: var(--warn);
+}
+
+.zlc-hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 4px 0;
+}
+
+.zlc-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+/* ---- collapsed ---- */
+
+.zlc-root.collapsed .zlc-header,
+.zlc-root.collapsed .zlc-tabs,
+.zlc-root.collapsed .zlc-panel,
+.zlc-root.collapsed .zlc-global-status,
+.zlc-root.collapsed .zlc-resize-handle {
+  display: none;
+}
+
+.zlc-expand-strip {
+  display: none;
+}
+.zlc-root.collapsed .zlc-expand-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  gap: 10px;
+  height: 100%;
+}
+.zlc-expand-strip .vertical-label {
+  writing-mode: vertical-rl;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  user-select: none;
+}

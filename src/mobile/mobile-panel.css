@@ -1,0 +1,208 @@
+/* Zeta Log Companion Mobile — Shadow DOM 内のみで適用 */
+
+:host {
+  all: initial;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.zlm-root {
+  --bg: #14161a;
+  --bg-2: #1c2027;
+  --bg-3: #242a33;
+  --border: #313845;
+  --text: #e7e9ee;
+  --muted: #9aa3b2;
+  --accent: #7aa2ff;
+  --accent-2: #2e4a8f;
+  --ok: #5dd39e;
+  --warn: #ffcf6b;
+  --danger: #ff7a7a;
+
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", system-ui,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* ---- フローティングボタン ---- */
+
+button.zlm-fab {
+  position: fixed;
+  left: 8px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 128px);
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(20, 22, 26, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button.zlm-fab .count {
+  color: var(--accent);
+}
+
+/* ---- シート ---- */
+
+.zlm-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.zlm-sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: min(88dvh, 88vh);
+  padding: 12px 14px calc(env(safe-area-inset-bottom, 0px) + 12px);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-radius: 14px 14px 0 0;
+}
+
+.zlm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.zlm-title {
+  font-size: 16px;
+  font-weight: 700;
+  word-break: break-all;
+  min-width: 0;
+}
+
+button.zlm-close {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-3);
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.zlm-stats {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.zlm-save-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+.zlm-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--ok);
+  color: var(--ok);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+.zlm-badge.off {
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.zlm-btn-row {
+  display: flex;
+  gap: 8px;
+}
+
+button.zlm-btn {
+  flex: 1 1 0;
+  padding: 10px 8px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg-3);
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button.zlm-btn.primary {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+}
+button.zlm-btn:disabled {
+  opacity: 0.5;
+}
+
+.zlm-progress {
+  padding: 7px 9px;
+  border: 1px solid var(--accent-2);
+  border-radius: 8px;
+  background: rgba(122, 162, 255, 0.08);
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.zlm-status {
+  min-height: 1.2em;
+  font-size: 12px;
+  word-break: break-word;
+}
+.zlm-status.ok {
+  color: var(--ok);
+}
+.zlm-status.error {
+  color: var(--danger);
+}
+.zlm-status.busy {
+  color: var(--warn);
+}
+
+textarea.zlm-text {
+  flex: 1 1 auto;
+  min-height: 100px;
+  width: 100%;
+  resize: none;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg-2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12.5px;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+
+.zlm-note {
+  color: var(--muted);
+  font-size: 10.5px;
+}

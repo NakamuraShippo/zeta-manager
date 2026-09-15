@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Zeta Log Companion",
+  "version": "0.1.4",
+  "description": "Zeta Web版の会話ログを自動取得・保存し、閲覧・LLM要約できる補助ペインを追加します。",
+  "permissions": ["storage", "unlimitedStorage"],
+  "host_permissions": [
+    "https://zeta-ai.io/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://zeta-ai.io/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "Zeta Log Companion 設定を開く"
+  }
+}

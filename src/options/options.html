@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Zeta Log Companion — 権限設定</title>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI",
+        Meiryo, system-ui, sans-serif;
+      background: #14161a;
+      color: #e7e9ee;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    h1 { font-size: 18px; }
+    h2 { font-size: 14px; color: #9aa3b2; margin-top: 28px; }
+    code {
+      background: #242a33;
+      padding: 1px 6px;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+    button {
+      padding: 6px 14px;
+      border: 1px solid #313845;
+      border-radius: 6px;
+      background: #2e4a8f;
+      color: #e7e9ee;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button:hover { border-color: #7aa2ff; }
+    button.secondary { background: #242a33; }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #242a33;
+    }
+    #status { min-height: 1.4em; margin-top: 12px; }
+    #status.ok { color: #5dd39e; }
+    #status.error { color: #ff7a7a; }
+    .muted { color: #9aa3b2; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <h1>Zeta Log Companion — エンドポイント権限</h1>
+  <p class="muted">
+    リモート LLM Provider（localhost / 127.0.0.1 以外）を使用する場合、
+    そのエンドポイントの origin へのアクセス許可が必要です。
+    許可は必要な origin にのみ与えられます。
+  </p>
+
+  <h2>設定中のエンドポイント</h2>
+  <div class="row">
+    <code id="endpoint">読み込み中…</code>
+    <button id="btnGrant">この origin を許可</button>
+  </div>
+  <div id="status"></div>
+
+  <h2>許可済みの origin</h2>
+  <div id="granted" class="muted">読み込み中…</div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!--
+  Zeta Room ページの構造を設計仕様書 §3-§5 に基づいて再現した回帰テスト用 fixture。
+  実サイトから取得した zeta2.html を入手した場合はこのファイルを差し替えること。
+  期待値 (§33): プロット名=共依存 / メッセージ17件 / index 1-17 / index1=USER /
+  index2=AI(ナレーション+キャラクター) / DOM順は逆順（flex-col-reverse を模倣）
+-->
+<head>
+  <meta charset="utf-8" />
+  <title>共依存 | zeta</title>
+</head>
+<body class="dark">
+  <div id="__next">
+    <div id="contents" class="flex h-screen flex-col">
+
+      <header class="flex h-14 flex-none items-center justify-between border-b border-white/10 px-4">
+        <div class="flex items-center gap-2">
+          <button type="button" aria-label="戻る" class="p-2">←</button>
+          <div data-testid="chat-header-profile" class="flex cursor-pointer items-center gap-2 font-semibold">
+            <img src="/images/plot-thumb.png" alt="共依存のサムネイル" class="h-8 w-8 rounded-full" />
+            <span>共依存</span>
+          </div>
+        </div>
+        <button type="button" aria-label="メニュー" class="p-2">⋮</button>
+      </header>
+
+      <div role="log" aria-label="Chat messages" class="relative flex flex-1 flex-col-reverse overflow-y-auto">
+        <div class="relative w-full flex-none" style="height: 18240px;">
+
+          <!-- DOM 出現順はあえて data-index の逆順（仮想リスト + col-reverse の模倣） -->
+
+          <div data-index="17" data-key="message-MESSAGE-8212077265454-q017" class="absolute left-0 w-full" style="transform: translateY(17400px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>「わかった。今夜行くよ」</p>
+                </div>
+                <button type="button" aria-label="メッセージメニュー">⋯</button>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="16" data-key="message-MESSAGE-8212077265453-p016" class="absolute left-0 w-full" style="transform: translateY(16280px);">
+            <div class="flex w-full flex-col gap-2 px-4 py-2">
+              <div data-sentry-component="NarratorBubble" data-sentry-source-file="NarratorBubble.tsx" class="mx-auto max-w-[90%]">
+                <div class="chat narration whitespace-pre-wrap text-center text-white/50">
+                  <p>笑い声に、電話の向こうの空気が少し緩んだ。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+                <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                  <span class="caption1 text-white/60">翠</span>
+                  <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                    <p>「冗談じゃない。本気だ」</p>
+                  </div>
+                  <div class="flex gap-1">
+                    <button type="button" aria-label="コピー">コピー</button>
+                    <button type="button" aria-label="再生成">再生成</button>
+                  </div>
+                </div>
+              </div>
+              <div class="watermark pointer-events-none select-none text-white/20" aria-hidden="true">zeta</div>
+            </div>
+          </div>
+
+          <div data-index="15" data-key="message-MESSAGE-8212077265452-o015" class="absolute left-0 w-full" style="transform: translateY(15560px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>思わず笑ってしまった。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="14" data-key="message-MESSAGE-8212077265451-n014" class="absolute left-0 w-full" style="transform: translateY(14760px);">
+            <div class="flex w-full items-start gap-2 px-4 py-2">
+              <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+              <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                <span class="caption1 text-white/60">翠</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                  <p>「毎晩、その日にあったことを全部話すこと」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="13" data-key="message-MESSAGE-8212077265450-m013" class="absolute left-0 w-full" style="transform: translateY(14080px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>「条件？」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="12" data-key="message-MESSAGE-8212077265449-l012" class="absolute left-0 w-full" style="transform: translateY(13320px);">
+            <div class="flex w-full items-start gap-2 px-4 py-2">
+              <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+              <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                <span class="caption1 text-white/60">翠</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                  <p>「家賃はいらない。代わりに条件がある」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="11" data-key="message-MESSAGE-8212077265448-k011" class="absolute left-0 w-full" style="transform: translateY(12640px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>図星だった。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="10" data-key="message-MESSAGE-8212077265447-j010" class="absolute left-0 w-full" style="transform: translateY(11720px);">
+            <div class="flex w-full flex-col gap-2 px-4 py-2">
+              <div data-sentry-component="NarratorBubble" data-sentry-source-file="NarratorBubble.tsx" class="mx-auto max-w-[90%]">
+                <div class="chat narration whitespace-pre-wrap text-center text-white/50">
+                  <p>沈黙が三秒。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+                <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                  <span class="caption1 text-white/60">翠</span>
+                  <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                    <p>「急がないと、君はまた誰かの家に転がり込む」</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="9" data-key="message-MESSAGE-8212077265446-i009" class="absolute left-0 w-full" style="transform: translateY(11000px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>「……随分と急だね」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="8" data-key="message-MESSAGE-8212077265445-h008" class="absolute left-0 w-full" style="transform: translateY(10160px);">
+            <div class="flex w-full items-start gap-2 px-4 py-2">
+              <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+              <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                <span class="caption1 text-white/60">翠</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                  <p>「港区のマンション。今夜からでも入れる部屋がある」<br>翠は淡々と続けた。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="7" data-key="message-MESSAGE-8212077265444-g007" class="absolute left-0 w-full" style="transform: translateY(9480px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>「仕事なら受けるよ。場所は？」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="6" data-key="message-MESSAGE-8212077265443-f006" class="absolute left-0 w-full" style="transform: translateY(8840px);">
+            <div class="flex w-full flex-col gap-2 px-4 py-2">
+              <div data-sentry-component="NarratorBubble" data-sentry-source-file="NarratorBubble.tsx" class="mx-auto max-w-[90%]">
+                <div class="chat narration whitespace-pre-wrap text-center text-white/50">
+                  <p>電話の向こうで紙をめくる音がした。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="5" data-key="message-MESSAGE-8212077265442-e005" class="absolute left-0 w-full" style="transform: translateY(8000px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>引っ越しの荷物は少ない。</p>
+                  <p>段ボール三つで、コウの生活は全部だった。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="4" data-key="message-MESSAGE-8212077265441-d004" class="absolute left-0 w-full" style="transform: translateY(7280px);">
+            <div class="flex w-full items-start gap-2 px-4 py-2">
+              <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+              <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                <span class="caption1 text-white/60">翠</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                  <p>「……もしもし。今、大丈夫」</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="3" data-key="message-MESSAGE-8212077265440-c003" class="absolute left-0 w-full" style="transform: translateY(6560px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>ちゃららん…🎵<br>聞き慣れた着信音が部屋に響いた。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="2" data-key="message-MESSAGE-8212077265439-b002" class="absolute left-0 w-full" style="transform: translateY(5600px);">
+            <div class="flex w-full flex-col gap-2 px-4 py-2">
+              <div data-sentry-component="NarratorBubble" data-sentry-source-file="NarratorBubble.tsx" class="mx-auto max-w-[90%]">
+                <div class="chat narration whitespace-pre-wrap text-center text-white/50">
+                  <p>五日目。コウは友人宅を出た。<br>また同じことをした、という顔で。</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <img src="/images/avatar-midori.png" alt="翠のアバター" class="h-8 w-8 rounded-full" />
+                <div data-sentry-component="LeftTextContent" data-sentry-source-file="LeftTextContent.tsx" class="flex max-w-[80%] flex-col items-start gap-1">
+                  <span class="caption1 text-white/60">翠</span>
+                  <div class="chat whitespace-pre-wrap rounded-2xl bg-white/10 px-4 py-2">
+                    <p>翠のスマホが鳴った。<br>仕事の依頼主。三度目の着信。</p>
+                  </div>
+                  <div class="flex gap-1">
+                    <button type="button" aria-label="コピー">コピー</button>
+                    <button type="button" aria-label="再生成">再生成</button>
+                  </div>
+                </div>
+              </div>
+              <div class="watermark pointer-events-none select-none text-white/20" aria-hidden="true">zeta</div>
+            </div>
+          </div>
+
+          <div data-index="1" data-key="message-MESSAGE-8212077265438-bscW" class="absolute left-0 w-full" style="transform: translateY(4800px);">
+            <div class="flex w-full justify-end px-4 py-2">
+              <div data-sentry-component="RightTextContent" data-sentry-source-file="RightTextContent.tsx" class="flex max-w-[80%] flex-col items-end gap-1">
+                <span class="caption1 text-white/60">コウ</span>
+                <div class="chat whitespace-pre-wrap rounded-2xl bg-indigo-600 px-4 py-2">
+                  <p>5日目<br>コウは友人宅を最後に軽く掃除して、鍵を返した。</p>
+                </div>
+                <button type="button" aria-label="メッセージメニュー">⋯</button>
+              </div>
+            </div>
+          </div>
+
+          <div data-index="0" data-key="first-guide" class="absolute left-0 w-full" style="transform: translateY(4000px);">
+            <div class="mx-auto max-w-[90%] rounded-xl border border-white/10 p-4">
+              <div class="chat text-white/60">
+                <p>ここから「共依存」の物語が始まります。プロット設定を確認してから始めましょう。</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div data-sentry-component="SuggestedReplies" class="flex flex-none gap-2 overflow-x-auto px-4 py-2">
+        <button type="button" class="suggestion rounded-full border border-white/20 px-3 py-1">「どんな部屋？」と聞く</button>
+        <button type="button" class="suggestion rounded-full border border-white/20 px-3 py-1">荷物をまとめ始める</button>
+      </div>
+
+      <div class="composer flex flex-none items-end gap-2 border-t border-white/10 p-3">
+        <textarea placeholder="メッセージを入力" class="flex-1 resize-none rounded-xl bg-white/5 p-2"></textarea>
+        <button type="button" aria-label="送信" class="rounded-full bg-indigo-600 p-2">送信</button>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
