@@ -1,5 +1,5 @@
 /**
- * Zeta Log Companion 共通型定義。
+ * zeta-manager 共通型定義。
  * 仕様書 §6 / §15 / §16 / §20-22 に対応する。
  */
 

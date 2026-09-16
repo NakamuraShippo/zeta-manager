@@ -1,4 +1,4 @@
-# Zeta-manager
+# zeta-manager
 
 **Zetaの会話ログ管理と、Markdownによるロアブック作成を支援するツールです。**
 
@@ -8,7 +8,7 @@
 
 > **LLM要約機能はデバッグ中・動作未保証です。** 接続、会話の送信、要約結果の取得を含めて確認中です。
 
-## Zeta-managerでできること
+## zeta-managerでできること
 
 ### 会話ログを残す
 
@@ -34,12 +34,12 @@ Markdownファイルに書いた「題名・キーワード・内容」を読み
 - **導入済みの方** → [会話ログの使い方](#usage) / [ロアブックの入力](#lorebook) / [更新方法](#update)
 - **うまく動かない場合** → [困ったときは](#troubleshooting)
 
-> 製品名は **Zeta-manager** です。現在の配布ファイルでは、Chromeの拡張機能名に `Zeta Log Companion`、Userscriptsの一覧に `Zeta Log Companion Mobile`、iOS用ファイル名に `zeta-log-companion.user.js` という旧名称が残っています。いずれもこのツールです。以下の手順では、実際の画面やファイル名を目印として記載しています。
+> iOS用ファイル名は更新時の置き換え先を維持するため、`zeta-log-companion.user.js` のままです。画面上の表示名はChrome版・iOS版ともに **zeta-manager** です。
 
 <a id="chrome-install"></a>
 ## Chrome版のインストール
 
-パソコンのChromeでZeta-managerを使う手順です。ソースコードの編集は不要ですが、Chromeへ読み込むファイルを作る作業が一度必要です。
+パソコンのChromeでzeta-managerを使う手順です。ソースコードの編集は不要ですが、Chromeへ読み込むファイルを作る作業が一度必要です。
 
 ### 1. Node.jsをインストールする
 
@@ -49,7 +49,7 @@ Node.jsは、このプロジェクトのファイルをChromeで動く形へ変�
 
 **GitHubからダウンロードしたZIPには、Chromeへそのまま読み込める `dist` フォルダは含まれていません。** 手順3で作成します。
 
-### 2. Zeta-managerをダウンロードする
+### 2. zeta-managerをダウンロードする
 
 1. [リポジトリのトップページ](https://github.com/NakamuraShippo/zeta-manager)を開きます。
 2. ファイル一覧の上にある **Code** → **Download ZIP** をクリックします。
@@ -90,7 +90,7 @@ npm run build
 2. 右上の **デベロッパーモード** をオンにします。
 3. **パッケージ化されていない拡張機能を読み込む** をクリックします。
 4. 作成した **`dist` フォルダ**を選びます。
-5. 拡張機能一覧にZeta-managerの項目（現在の表示名：`Zeta Log Companion`）が追加されたことを確認します。
+5. 拡張機能一覧に**zeta-manager** の項目が追加されたことを確認します。
 
 選ぶのは、`manifest.json` と `content.js` が入った `dist` フォルダです。プロジェクト全体のフォルダや、ファイル単体は選びません。
 
@@ -105,7 +105,7 @@ Chromeで [Zeta](https://zeta-ai.io/) にログインし、プロットの会話
 <a id="ios-install"></a>
 ## iOS版のインストール
 
-iPhoneでは、Safariの機能拡張 **Userscripts** を通してZeta-managerを使います。パソコンやNode.jsは必要ありません。操作はZetaアプリではなく、Safari上のZetaで行います。
+iPhoneでは、Safariの機能拡張 **Userscripts** を通してzeta-managerを使います。パソコンやNode.jsは必要ありません。操作はZetaアプリではなく、Safari上のZetaで行います。
 
 ### 1. Userscriptsを準備する
 
@@ -115,7 +115,7 @@ iPhoneでは、Safariの機能拡張 **Userscripts** を通してZeta-managerを
 
 保存先は、次の手順でファイルを入れる場所です。アプリに表示される保存先をタップすると、「ファイル」アプリで確認できる版もあります。
 
-### 2. Zeta-managerのファイルを入れる
+### 2. zeta-managerのファイルを入れる
 
 1. **Safariで** [iOS用ファイル](dist-mobile/zeta-log-companion.user.js) を開きます。
 2. GitHubのファイル画面で **Raw** または **Download raw file** を選びます。「…」メニュー内にある場合もあります。
@@ -133,14 +133,14 @@ Rawを開いてプログラムの文字列が表示された場合は、Safari�
 3. Safariで [Zeta](https://zeta-ai.io/) を開きます。
 4. アドレスバー付近のページメニューから **機能拡張 / Userscripts** を開きます。
 5. Zetaへのアクセスを求められたら許可します。継続して使う場合は、このサイトへのアクセスを **常に許可** にします。
-6. スクリプト一覧のZeta-manager（現在の表示名：`Zeta Log Companion Mobile`）が有効になっていることを確認します。
+6. スクリプト一覧の**zeta-manager**が有効になっていることを確認します。
 7. Zetaページを再読み込みします。
 
 iOSの版によっては、設定の入口が **設定 → Safari** です。メニューの名称や位置が違う場合は [Apple公式の説明](https://support.apple.com/ja-jp/guide/iphone/iphab0432bf6/ios)も参照してください。
 
 ### 4. 会話ページで確認する
 
-SafariでZetaにログインし、プロットの会話を開きます。左下の **ZETA LOG** をタップして、会話テキストや **全履歴を同期 / コピー** が表示されれば導入完了です。
+SafariでZetaにログインし、プロットの会話を開きます。左下の **zeta-manager** をタップして、会話テキストや **全履歴を同期 / コピー** が表示されれば導入完了です。
 
 <a id="usage"></a>
 ## 会話ログの使い方
@@ -216,7 +216,7 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 会話ログ管理とロアブック入力だけを使う場合、この設定は不要です。iOS版にLLM要約は含まれません。
 
 <a id="update"></a>
-## Zeta-managerを更新する
+## zeta-managerを更新する
 
 ### Chrome版
 
@@ -285,7 +285,7 @@ npm run build
 | `src/shared/` | 型・テキスト整形・共通処理 |
 | `tests/` | 回帰テスト。会話HTMLのfixtureは合成データ |
 
-会話の順序は画面上の位置と共通メッセージを使って接合します。再生成の非表示変種は履歴として保持し、部分同期の未走査分は既存の前後関係に沿って戻します。保存データの `index` はZetaの `data-index` ではなく、Zeta-manager側の通し番号です。
+会話の順序は画面上の位置と共通メッセージを使って接合します。再生成の非表示変種は履歴として保持し、部分同期の未走査分は既存の前後関係に沿って戻します。保存データの `index` はZetaの `data-index` ではなく、zeta-manager側の通し番号です。
 
 DBはバージョン2です。バージョン1からの更新時には、順序の定義変更に伴って既存データを消去する処理があります。
 

@@ -21,7 +21,7 @@ const extensionEntries = [
 ];
 
 const userscriptBanner = `// ==UserScript==
-// @name         Zeta Log Companion Mobile
+// @name         zeta-manager
 // @namespace    zeta-log-companion
 // @version      ${manifest.version}
 // @description  Zeta の会話ログを取得・自動保存し、統合テキストをコピーできる浮動パネル（モバイル向け）

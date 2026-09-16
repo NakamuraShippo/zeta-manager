@@ -55,11 +55,11 @@ const TEMPLATE = `
 
   <div class="zlc-expand-strip">
     <button class="zlc-icon-btn" data-el="btnExpand" title="展開">◀</button>
-    <div class="vertical-label">ZETA LOG</div>
+    <div class="vertical-label">zeta-manager</div>
   </div>
 
   <header class="zlc-header">
-    <div class="zlc-title">Zeta Log Companion</div>
+    <div class="zlc-title">zeta-manager</div>
     <button class="zlc-icon-btn" data-el="btnCollapse" title="折りたたむ">▶</button>
   </header>
 

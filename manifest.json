@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Zeta Log Companion",
+  "name": "zeta-manager",
   "version": "0.1.4",
   "description": "Zeta Web版の会話ログを自動取得・保存し、閲覧・LLM要約できる補助ペインを追加します。",
   "permissions": ["storage", "unlimitedStorage"],
@@ -25,6 +25,6 @@
     "open_in_tab": true
   },
   "action": {
-    "default_title": "Zeta Log Companion 設定を開く"
+    "default_title": "zeta-manager 設定を開く"
   }
 }

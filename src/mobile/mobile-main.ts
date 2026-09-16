@@ -1,5 +1,5 @@
 /**
- * Zeta Log Companion Mobile — iOS Safari 向けユーザースクリプト版エントリ。
+ * zeta-manager — iOS Safari 向けユーザースクリプト版エントリ。
  *
  * Chrome 拡張 API を一切使わず、ページ内で完結する:
  * - 取得ロジック（zeta-adapter / capture-window / conversation-capture /

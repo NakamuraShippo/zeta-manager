@@ -1,4 +1,4 @@
-/* Zeta Log Companion panel — Shadow DOM 内のみで適用 (§17 / §19) */
+/* zeta-manager panel — Shadow DOM 内のみで適用 (§17 / §19) */
 
 :host {
   all: initial;

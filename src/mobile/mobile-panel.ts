@@ -19,7 +19,7 @@ export interface MobilePanelHost {
 const TEMPLATE = `
 <div class="zlm-root">
   <button class="zlm-fab" data-el="fab" type="button">
-    <span>LOG</span>
+    <span>zeta-manager</span>
     <span class="count" data-el="fabCount">0</span>
   </button>
 
@@ -41,7 +41,7 @@ const TEMPLATE = `
       <div class="zlm-progress" data-el="syncProgress" hidden></div>
       <div class="zlm-status" data-el="status"></div>
       <textarea class="zlm-text" data-el="liveText" readonly spellcheck="false"></textarea>
-      <div class="zlm-note">Zeta Log Companion Mobile — 取得したログはこの端末内にのみ保存されます</div>
+      <div class="zlm-note">zeta-manager — 取得したログはこの端末内にのみ保存されます</div>
     </div>
   </div>
 </div>
