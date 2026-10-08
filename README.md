@@ -43,17 +43,20 @@ Markdownファイルに書いた「題名・キーワード・内容」を読み
 
 ### 1. Chrome用ZIPをダウンロードする
 
-[**Chrome版をダウンロード（zeta-manager-chrome.zip）**](https://github.com/NakamuraShippo/zeta-manager/releases/latest/download/zeta-manager-chrome.zip)
+[**Chrome版をダウンロード（zeta-manager-chrome.zip）**](https://github.com/NakamuraShippo/zeta-manager/raw/refs/heads/main/downloads/zeta-manager-chrome.zip)
 
-リンクをクリックしてZIPを保存してください。[リリース一覧](https://github.com/NakamuraShippo/zeta-manager/releases)から取得する場合は、Assets内の **zeta-manager-chrome.zip** を選びます。
+上のリンクをクリックすると、このリポジトリに保存された完成済みZIPをダウンロードできます。
 
-**Code → Download ZIP** や **Source code (zip)** は開発者向けのソースコードです。通常のインストールでは使いません。
+ファイル一覧から探す場合は、[downloadsフォルダ](downloads) → **zeta-manager-chrome.zip** を開き、**Download raw file（ダウンロード）** を押してください。
+
+通常は上の直接ダウンロードを使ってください。**Code → Download ZIP** でリポジトリ全体を取得した場合は、展開後の `downloads/zeta-manager-chrome.zip` をさらに展開します。リポジトリ全体のフォルダをChromeへ読み込むことはできません。
 
 ### 2. ZIPを展開する
 
-1. ダウンロードしたZIPを展開します。Windowsは右クリック → **すべて展開**、MacはZIPをダブルクリックします。
-2. 展開したフォルダを、ドキュメントなどの保管場所へ移します。
-3. フォルダ内に `manifest.json`、`content.js`、`service-worker.js`、`options.html`、`options.js` があることを確認します。
+1. ダウンロードした `zeta-manager-chrome.zip` を探します。通常は「ダウンロード」フォルダにあります。
+2. WindowsではZIPを右クリック → **すべて展開** → **展開**、MacではZIPをダブルクリックします。
+3. 展開した `zeta-manager-chrome` フォルダを、ドキュメントなどの保管場所へ移します。
+4. フォルダ内に `manifest.json`、`content.js`、`service-worker.js`、`options.html`、`options.js` があることを確認します。
 
 ZIPの中を表示するだけでなく、必ず展開してください。導入後もChromeがこのフォルダを使うため、移動・削除せずに残します。
 
@@ -61,7 +64,7 @@ ZIPの中を表示するだけでなく、必ず展開してください。導�
 
 1. Chromeのアドレスバーに `chrome://extensions` と入力し、Enterを押します。
 2. 右上の **デベロッパーモード** をオンにします。
-3. **パッケージ化されていない拡張機能を読み込む** をクリックします。
+3. 左上に表示される **パッケージ化されていない拡張機能を読み込む** をクリックします。
 4. 展開した、**`manifest.json` が直接入っているフォルダ**を選びます。
 5. 拡張機能一覧に **zeta-manager** が追加されれば登録完了です。
 
@@ -210,7 +213,7 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 ### Chrome版
 
 1. 必要なログをコピーして退避します。
-2. [最新のChrome用ZIP](https://github.com/NakamuraShippo/zeta-manager/releases/latest/download/zeta-manager-chrome.zip)をダウンロードし、展開します。
+2. [最新のChrome用ZIP](https://github.com/NakamuraShippo/zeta-manager/raw/refs/heads/main/downloads/zeta-manager-chrome.zip)をダウンロードし、展開します。
 3. 展開した中身を、Chromeに登録済みのフォルダへコピーして置き換えます。以前ビルドして導入した方は、そのときの `dist` が置き換え先です。再ビルドは不要です。
 4. `chrome://extensions` で該当する拡張機能の **再読み込み（丸い矢印）** を押します。
 5. Zetaページも再読み込みします。
@@ -229,7 +232,7 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 | 症状 | 確認すること |
 | --- | --- |
 | Node.jsやビルドを求められる | 上の「Chrome版をダウンロード」から完成済みZIPを取得すれば不要です。 |
-| ZIPに `src` や `package.json` が入っている | ソースコードのZIPです。Assetsの `zeta-manager-chrome.zip` を取得してください。 |
+| ZIPに `src` や `package.json` が入っている | リポジトリ全体のZIPです。その中の `downloads/zeta-manager-chrome.zip` をさらに展開するか、上の直接ダウンロードを使ってください。 |
 | 展開後に `dist` がない | 配布ZIPでは `manifest.json` などが展開先に直接入ります。そのフォルダをChromeで選んでください。 |
 | Chromeでマニフェストを読み込めない | `manifest.json` が直接入った展開済みフォルダを選びます。 |
 | 会話パネルが出ない | 拡張機能を有効にし、Zetaの会話ページを再読み込みします。 |
@@ -265,6 +268,7 @@ npm run build
 
 | 場所 | 内容 |
 | --- | --- |
+| `downloads/zeta-manager-chrome.zip` | リポジトリに同梱するChrome版インストール用ZIP |
 | `dist/` | Chrome用のビルド成果物。Git管理対象外 |
 | `dist-mobile/` | iOS用ユーザースクリプトとブックマークレット |
 | `src/content/` | 会話解析・スクロール取得・時系列管理・Chrome版パネル |
@@ -280,7 +284,7 @@ npm run build
 
 DBはバージョン2です。バージョン1からの更新時には、順序の定義変更に伴って既存データを消去する処理があります。
 
-配布前に型チェック・テスト・ビルドを実行してください。`dist` 直下の5ファイルをZIPの直下に格納し、`zeta-manager-chrome.zip` としてGitHub Releasesへ添付します。`dist-mobile/zeta-log-companion.user.js` も添付してください。最新リリースへのリンクを維持するため、添付ファイル名は固定します。
+配布前に型チェック・テスト・ビルドを実行してください。`dist` 直下の5ファイルをZIPの直下に格納し、`downloads/zeta-manager-chrome.zip` を更新してコミットします。ソースを変更した際は同梱ZIPも更新してください。GitHub Releasesへ配布する場合も同じZIPと `dist-mobile/zeta-log-companion.user.js` を添付します。
 
 <details>
 <summary>iOSの代替導入：ブックマークレット</summary>
