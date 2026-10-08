@@ -39,68 +39,41 @@ Markdownファイルに書いた「題名・キーワード・内容」を読み
 <a id="chrome-install"></a>
 ## Chrome版のインストール
 
-パソコンのChromeでzeta-managerを使う手順です。ソースコードの編集は不要ですが、Chromeへ読み込むファイルを作る作業が一度必要です。
+**Node.jsのインストールやコマンドの入力は不要です。** 完成済みZIPを展開してChromeに登録します。
 
-### 1. Node.jsをインストールする
+### 1. Chrome用ZIPをダウンロードする
 
-[Node.js公式サイト](https://nodejs.org/)から **LTS版** のインストーラーをダウンロードし、画面の案内に従ってインストールします。
+[**Chrome版をダウンロード（zeta-manager-chrome.zip）**](https://github.com/NakamuraShippo/zeta-manager/releases/latest/download/zeta-manager-chrome.zip)
 
-Node.jsは、このプロジェクトのファイルをChromeで動く形へ変換するために使います。この変換作業を「ビルド」と呼びます。
+リンクをクリックしてZIPを保存してください。[リリース一覧](https://github.com/NakamuraShippo/zeta-manager/releases)から取得する場合は、Assets内の **zeta-manager-chrome.zip** を選びます。
 
-**GitHubからダウンロードしたZIPには、Chromeへそのまま読み込める `dist` フォルダは含まれていません。** 手順3で作成します。
+**Code → Download ZIP** や **Source code (zip)** は開発者向けのソースコードです。通常のインストールでは使いません。
 
-### 2. zeta-managerをダウンロードする
+### 2. ZIPを展開する
 
-1. [リポジトリのトップページ](https://github.com/NakamuraShippo/zeta-manager)を開きます。
-2. ファイル一覧の上にある **Code** → **Download ZIP** をクリックします。
-3. ダウンロードしたZIPを展開します。Windowsでは右クリックして **すべて展開**、MacではZIPをダブルクリックします。
-4. 展開したフォルダを、ドキュメントなどの保管場所に置きます。
-5. フォルダを開き、`package.json`、`build.mjs`、`src` が入っていることを確認します。
+1. ダウンロードしたZIPを展開します。Windowsは右クリック → **すべて展開**、MacはZIPをダブルクリックします。
+2. 展開したフォルダを、ドキュメントなどの保管場所へ移します。
+3. フォルダ内に `manifest.json`、`content.js`、`service-worker.js`、`options.html`、`options.js` があることを確認します。
 
-ZIPの中を表示しただけの状態では、次の作業はできません。必ず展開してください。
+ZIPの中を表示するだけでなく、必ず展開してください。導入後もChromeがこのフォルダを使うため、移動・削除せずに残します。
 
-### 3. Chrome用のファイルを作る
-
-**Windowsの場合**
-
-1. エクスプローラーで `package.json` があるフォルダを開きます。
-2. 上部のアドレスバー（フォルダの場所が表示される欄）をクリックします。
-3. `cmd` と入力し、Enterを押します。その場所でコマンドプロンプトが開きます。
-
-**Macの場合**
-
-1. 「ターミナル」アプリを開きます。
-2. `cd ` と入力します。`cd` の後ろには半角スペースを入れます。
-3. `package.json` があるフォルダをターミナルへドラッグし、Enterを押します。
-
-開いたコマンド画面で、次の2行を順番に実行します。1行目がエラーなく終了してから、2行目を入力してください。
-
-```sh
-npm ci
-npm run build
-```
-
-`npm ci` は必要な部品をダウンロードする処理です。初回は少し待ちます。`npm run build` の終了時に `build complete: dist/ , dist-mobile/` と表示されれば成功です。
-
-`package.json` と同じ場所に、`dist` フォルダができていることを確認してください。
-
-### 4. Chromeへ登録する
+### 3. Chromeへ登録する
 
 1. Chromeのアドレスバーに `chrome://extensions` と入力し、Enterを押します。
 2. 右上の **デベロッパーモード** をオンにします。
 3. **パッケージ化されていない拡張機能を読み込む** をクリックします。
-4. 作成した **`dist` フォルダ**を選びます。
-5. 拡張機能一覧に**zeta-manager** の項目が追加されたことを確認します。
+4. 展開した、**`manifest.json` が直接入っているフォルダ**を選びます。
+5. 拡張機能一覧に **zeta-manager** が追加されれば登録完了です。
 
-選ぶのは、`manifest.json` と `content.js` が入った `dist` フォルダです。プロジェクト全体のフォルダや、ファイル単体は選びません。
+ZIPや `manifest.json` 単体は選びません。フォルダが二重になっている場合は、内側の `manifest.json` がある方を選んでください。
 
-導入後もChromeはこのフォルダを使うため、移動・削除せずに残してください。[Chrome公式の読み込み手順](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)も参照できます。
+Chromeウェブストアからの導入ではないため、デベロッパーモードでの読み込みが必要です。[Chrome公式の手順](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)も参照できます。
 
-### 5. Zetaで開く
+### 4. Zetaで確認する
 
-Chromeで [Zeta](https://zeta-ai.io/) にログインし、プロットの会話ページを開きます。右側に **LIVE / ARCHIVES / SUMMARY / SETTINGS** のパネルが表示されれば導入完了です。
+Chromeで [Zeta](https://zeta-ai.io/) にログインし、プロットの会話ページを開きます。右側に **LIVE / ARCHIVES / SUMMARY / SETTINGS** が表示されれば導入完了です。
 
-既に開いていたZetaページは再読み込みしてください。トップページに会話用パネルが出ないのは正常です。
+既に開いていたページは再読み込みしてください。トップページに会話用パネルが出ないのは正常です。
 
 <a id="ios-install"></a>
 ## iOS版のインストール
@@ -117,14 +90,14 @@ iPhoneでは、Safariの機能拡張 **Userscripts** を通してzeta-managerを
 
 ### 2. zeta-managerのファイルを入れる
 
-1. **Safariで** [iOS用ファイル](dist-mobile/zeta-log-companion.user.js) を開きます。
-2. GitHubのファイル画面で **Raw** または **Download raw file** を選びます。「…」メニュー内にある場合もあります。
+1. **Safariで** [iOS用ファイルをダウンロード](https://github.com/NakamuraShippo/zeta-manager/releases/latest/download/zeta-log-companion.user.js) を開きます。
+2. ダウンロードの確認が出たら保存します。Rawボタンを探す必要はありません。
 3. ダウンロードしたファイルを、「ファイル」アプリからUserscriptsの保存先へ移動します。共有メニューの **ファイルに保存** が使える場合は、その保存先を直接選んでも構いません。
 4. 保存した名前が `zeta-log-companion.user.js` であることを確認します。
 
-末尾に `.txt` や `.html` が付いたファイルでは動作しません。また、GitHubのページ自体ではなく、Rawのスクリプトを保存してください。
+末尾に `.txt` や `.html` が付いたファイルでは動作しません。リンク先のスクリプトを保存してください。
 
-Rawを開いてプログラムの文字列が表示された場合は、SafariのページメニューからUserscriptsを開き、インストール案内を使う方法もあります。詳細は [Userscripts公式の案内](https://github.com/quoid/userscripts#installation)を参照してください。
+リンク先でプログラムの文字列が表示された場合は、SafariのページメニューからUserscriptsを開き、インストール案内を使う方法もあります。詳細は [Userscripts公式の案内](https://github.com/quoid/userscripts#installation)を参照してください。
 
 ### 3. Safariで有効にする
 
@@ -237,8 +210,8 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 ### Chrome版
 
 1. 必要なログをコピーして退避します。
-2. 新しいソースコードをダウンロードし、[導入時と同じ手順](#chrome-install)で `npm ci` と `npm run build` を実行します。
-3. 新しい `dist` の中身を、Chromeに登録済みの `dist` フォルダへコピーして置き換えます。
+2. [最新のChrome用ZIP](https://github.com/NakamuraShippo/zeta-manager/releases/latest/download/zeta-manager-chrome.zip)をダウンロードし、展開します。
+3. 展開した中身を、Chromeに登録済みのフォルダへコピーして置き換えます。以前ビルドして導入した方は、そのときの `dist` が置き換え先です。再ビルドは不要です。
 4. `chrome://extensions` で該当する拡張機能の **再読み込み（丸い矢印）** を押します。
 5. Zetaページも再読み込みします。
 
@@ -246,7 +219,7 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 
 ### iOS版
 
-新しい [iOS用ファイル](dist-mobile/zeta-log-companion.user.js) を保存し、Userscriptsの保存先にある同名ファイルを置き換えます。その後、SafariのZetaページを再読み込みします。
+新しい [iOS用ファイルをダウンロード](https://github.com/NakamuraShippo/zeta-manager/releases/latest/download/zeta-log-companion.user.js) を保存し、Userscriptsの保存先にある同名ファイルを置き換えます。その後、SafariのZetaページを再読み込みします。
 
 古い版を別名で残して同時に有効にせず、更新した1つを使ってください。
 
@@ -255,10 +228,10 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 
 | 症状 | 確認すること |
 | --- | --- |
-| `npm` が見つからない | Node.jsをインストールし、コマンド画面を開き直します。 |
-| `package.json` が見つからない | ZIPを展開し、`package.json` があるフォルダでコマンドを実行します。 |
-| `dist` がない | `npm ci` と `npm run build` の成功を確認します。GitHubのZIPには含まれません。 |
-| Chromeでマニフェストを読み込めない | `manifest.json` が入った `dist` フォルダを選びます。 |
+| Node.jsやビルドを求められる | 上の「Chrome版をダウンロード」から完成済みZIPを取得すれば不要です。 |
+| ZIPに `src` や `package.json` が入っている | ソースコードのZIPです。Assetsの `zeta-manager-chrome.zip` を取得してください。 |
+| 展開後に `dist` がない | 配布ZIPでは `manifest.json` などが展開先に直接入ります。そのフォルダをChromeで選んでください。 |
+| Chromeでマニフェストを読み込めない | `manifest.json` が直接入った展開済みフォルダを選びます。 |
 | 会話パネルが出ない | 拡張機能を有効にし、Zetaの会話ページを再読み込みします。 |
 | iPhoneで動かない | Safariで開いているか、Userscriptsの有効化・Zetaへのアクセス許可・保存先・ファイル名を確認します。 |
 | Userscriptsにファイルが出ない | 指定した保存先に `.user.js` があるか確認します。iCloud上のファイルはダウンロード済みにしてください。 |
@@ -278,6 +251,8 @@ iOS版には保存ログ一覧の画面がありません。大切なログは�
 LLM要約を試用する場合は、会話本文と必要なメタデータを設定した接続先へ送信します。APIキーは既定ではブラウザ終了時に破棄され、保存設定をオンにした場合のみ永続保存します。
 
 ## 開発・配布する方へ
+
+以下はソースコードを変更する方向けです。通常のインストールには不要です。Node.jsのLTS版を導入し、package.jsonがあるフォルダで実行します。
 
 ```sh
 npm ci
@@ -305,7 +280,7 @@ npm run build
 
 DBはバージョン2です。バージョン1からの更新時には、順序の定義変更に伴って既存データを消去する処理があります。
 
-配布前には `npm run build` でChrome版・iOS版の両方を更新してください。ビルド済みChrome版をGitHub ReleasesへZIPで添付すれば、利用者はNode.js導入とビルドを省略できます。
+配布前に型チェック・テスト・ビルドを実行してください。`dist` 直下の5ファイルをZIPの直下に格納し、`zeta-manager-chrome.zip` としてGitHub Releasesへ添付します。`dist-mobile/zeta-log-companion.user.js` も添付してください。最新リリースへのリンクを維持するため、添付ファイル名は固定します。
 
 <details>
 <summary>iOSの代替導入：ブックマークレット</summary>
