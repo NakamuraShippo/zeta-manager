@@ -9,6 +9,7 @@
 
 import { ConversationStore } from "./conversation-capture";
 import { startLorebookImporter } from "../lorebook/importer";
+import { startSpeakerShortcuts } from "./speaker-shortcuts";
 import { captureVisibleWindow } from "./capture-window";
 import { batchLiveUpdates, CaptureScrollTracker, PassiveCapture } from "./passive-capture";
 import {
@@ -394,6 +395,7 @@ class App {
   // Next.js の hydration が終わる前に DOM へ触れない（load 完了後に起動）
   const boot = () => {
     startLorebookImporter();
+    startSpeakerShortcuts();
     const app = new App();
     void app.start();
   };

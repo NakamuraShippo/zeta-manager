@@ -14,6 +14,7 @@
 
 import { ConversationStore } from "../content/conversation-capture";
 import { startLorebookImporter } from "../lorebook/importer";
+import { startSpeakerShortcuts } from "../content/speaker-shortcuts";
 import { captureVisibleWindow } from "../content/capture-window";
 import { batchLiveUpdates, CaptureScrollTracker, PassiveCapture } from "../content/passive-capture";
 import {
@@ -342,6 +343,7 @@ class MobileApp {
 
   const boot = () => {
     startLorebookImporter();
+    startSpeakerShortcuts();
     const app = new MobileApp();
     app.start();
   };
